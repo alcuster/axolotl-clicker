@@ -1,3 +1,39 @@
-<h1>
-  {{title}}
-</h1>
+<div class="container">
+  <h1 style="font-style: italic; color: white;">AXOLOTL CLICKER 300{{ timesReincarnated }}</h1>
+  <div class="row">
+    <div class="col-sm-6">
+      <h1 style="color: white;">{{instructions}}</h1>
+      <div *ngIf="dead">
+        <button type="button" class="btn btn-success" (click)="reincarnate()">REINCARNATE</button>
+        <br>
+        <br>
+        <button *ngIf="checkPactEligibility()" type="button" class="btn btn-warning" (click)="makePact()">MAKE A PACT WITH THE DEVIL</button>
+      </div>
+      <br>
+      <img *ngIf="!dead" class="center-block" width="300px" (click)="handleClick(getElapsed())" src="../images/axolotl.png"/>
+      <img *ngIf="dead" class="center-block" width="300px" (click)="handleClick(getElapsed())" src="../images/axolotl_dead.png"/>
+      <p *ngIf="madePact" style="color: white;">In your desperation to provide your axolotl with a happy life, you forge a pact with the devil. In exchange, your happiness will increase exponentially, but each future lifespan will be halved.</p>
+    </div>
+    <div class="col-sm-6" *ngIf="insertCoin">
+      <div class='card'>
+        <div *ngIf="!dead">
+          <h2>Time since last click: {{elapsedSecString}}.{{elapsedTenString}}</h2>
+          <h2 [ngStyle]="{color: msgColor}">{{message}}</h2>
+        </div>
+        <h3>Happiness Points:</h3>
+        <h2 *ngIf="!dead"> {{added}}</h2>
+        <h1 [style.color]="getStyle()"> {{points}}</h1>
+        <div *ngIf="!dead">
+          <button *ngIf="!boughtBreak" type="button" class="btn btn-primary" (click)="purchaseBreak()">Hire a pet-sitter. (Happiness -1000)</button>
+          <h4 *ngIf="boughtBreak">Pet-sitter duration: {{breakSecString}}.{{breakTenString}}</h4>
+          <h3 style="margin-top:10px;">Time until your pet dies: </h3>
+          <h1> {{secString}}.{{tenString}}</h1>
+          <p *ngIf="seconds < 0">Oh. You broke time. Nice.</p>
+          <h2 *ngIf="multiplier > 0">Multiplier: {{multiplier}}x</h2>
+          <h3 *ngIf="timesReincarnated > 0">Lifetimes: {{timesReincarnated}}</h3>
+          <h3 *ngIf="timesReincarnated > 0">Total clicks: {{clicks}}</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

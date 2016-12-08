@@ -10,8 +10,8 @@
         <button *ngIf="checkPactEligibility()" type="button" class="btn btn-warning" (click)="makePact()">MAKE A PACT WITH THE DEVIL</button>
       </div>
       <br>
-      <img *ngIf="!dead" class="center-block" width="300px" (click)="handleClick(getElapsed())" src="../images/axolotl.png"/>
-      <img *ngIf="dead" class="center-block" width="300px" (click)="handleClick(getElapsed())" src="../images/axolotl_dead.png"/>
+      <img *ngIf="!dead" class="center-block" width="300px" (click)="handleClick(getElapsed())" src="http://24.media.tumblr.com/6516cf684174a4b2255b7b0553041140/tumblr_mfsl02Ve6I1rw71tro1_r1_500.png"/>
+      <img *ngIf="dead" class="center-block" width="300px" (click)="handleClick(getElapsed())" src="http://i.imgur.com/uoDbW8o.png"/>
       <p *ngIf="madePact" style="color: white;">In your desperation to provide your axolotl with a happy life, you forge a pact with the devil. In exchange, your happiness will increase exponentially, but each future lifespan will be halved.</p>
     </div>
     <div class="col-sm-6" *ngIf="insertCoin">
